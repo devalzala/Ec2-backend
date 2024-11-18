@@ -35,7 +35,7 @@ app.post('/createcustomer', upload.single('file'), async (req, res) => {
     const { name, email } = req.body;
     let fileUrl = "";
 
-    if (req.file.location) {
+    if (req && req.file && req.file.location) {
         fileUrl = req.file.location
     }
 
