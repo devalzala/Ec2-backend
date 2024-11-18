@@ -11,7 +11,6 @@ const CustomerSchema = new mongoose.Schema({
     },
     fileUrl: {
         type: String,
-        required: true,
     },
 });
 
