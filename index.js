@@ -33,7 +33,11 @@ app.get('/', (req, res) => {
 // Create Customer
 app.post('/createcustomer', upload.single('file'), async (req, res) => {
     const { name, email } = req.body;
-    const fileUrl = req.file.location;
+    let fileUrl = "";
+
+    if (req.file.location) {
+        fileUrl = req.file.location
+    }
 
     try {
         const customer = await Customer.create({ name, email, fileUrl });
