@@ -26,6 +26,10 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // CRUD Routes for Customers
 
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+
 // Create Customer
 app.post('/createcustomer', upload.single('file'), async (req, res) => {
     const { name, email } = req.body;
