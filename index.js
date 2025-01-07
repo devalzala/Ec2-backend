@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 });
 
 // Create Customer
-app.post('/createcustomer', upload.single('file'), async (req, res) => {
+app.post('/api/createcustomer', upload.single('file'), async (req, res) => {
     const { name, email } = req.body;
     let fileUrl = "";
 
@@ -48,7 +48,7 @@ app.post('/createcustomer', upload.single('file'), async (req, res) => {
 });
 
 // Get Customers
-app.get('/getcustomer', async (req, res) => {
+app.get('/api/getcustomer', async (req, res) => {
     try {
         const customers = await Customer.find({});
         res.status(200).json(customers);
@@ -58,7 +58,7 @@ app.get('/getcustomer', async (req, res) => {
 });
 
 // Update Customer
-app.put('/updatecustomer/:id', upload.single('file'), async (req, res) => {
+app.put('/api/updatecustomer/:id', upload.single('file'), async (req, res) => {
     const { name, email } = req.body;
     let fileUrl;
 
@@ -97,7 +97,7 @@ app.put('/updatecustomer/:id', upload.single('file'), async (req, res) => {
 });
 
 // Delete Customer
-app.delete('/deletecustomer/:id', async (req, res) => {
+app.delete('/api/deletecustomer/:id', async (req, res) => {
     try {
         const customer = await Customer.findByIdAndDelete(req.params.id);
         if (!customer) {
